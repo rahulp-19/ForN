@@ -1,157 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Nikku ❤️</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Nikku ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.container {
-    text-align: center;
-    background: rgba(255,255,255,0.9);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 400px;
-}
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-h1 { color: #ff4d6d; }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 420px;
+        }
 
-p { color: #555; font-size: 16px; }
+        h1 {
+            color: #ff4d6d;
+            font-size: 22px;
+        }
 
-button {
-    margin: 5px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 25px;
-    background: #ff4d6d;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        p {
+            color: #555;
+            font-size: 15px;
+        }
 
-button:hover { background: #ff1f4d; }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-.message {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #ff4d6d;
-}
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 16px;
+        }
 
-/* Floating hearts */
-.heart {
-    position: absolute;
-    color: #ff4d6d;
-    animation: float 5s linear infinite;
-}
+        button:active {
+            transform: scale(0.95);
+        }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
-}
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ff4d6d;
+            min-height: 40px;
+        }
 
-/* Bubble game */
-.bubble {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #ff99aa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 20px;
-}
+        /* floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            animation: float 5s linear infinite;
+        }
 
-/* Breathing circle */
-.breath {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #ff4d6d;
-    margin: 10px auto;
-    animation: breathe 4s infinite;
-}
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
 
-@keyframes breathe {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.4); }
-    100% { transform: scale(1); }
-}
-</style>
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        /* game */
+        .bubble {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ff99aa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        /* breathing */
+        .breath {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #ff4d6d;
+            margin: 10px auto;
+            animation: breathe 4s infinite;
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* hug animation */
+        .hug {
+            font-size: 40px;
+            animation: hugAnim 1s infinite alternate;
+        }
+
+        @keyframes hugAnim {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        /* mood input */
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Hey Nikku 💖</h1>
-    <p>You are safe. You are loved. Take a deep breath 🌸</p>
+    <div class="container">
+        <h1>Hey Nikku 💖</h1>
+        <p>You are safe. I'm here for you 🌸</p>
 
-    <button onclick="showMessage()">💌 Sweet Message</button>
-    <button onclick="startGame()">🎮 Pop Bubbles</button>
-    <button onclick="startBreathing()">🫶 Calm Breathing</button>
+        <div class="buttons">
+            <button onclick="showMessage()">💌 Sweet Message</button>
+            <button onclick="startGame()">🎮 Pop Hearts</button>
+            <button onclick="startBreathing()">🫶 Calm Breathing</button>
+            <button onclick="giveHug()">🤗 Virtual Hug</button>
+        </div>
 
-    <div class="message" id="message"></div>
-    <div id="game"></div>
-    <div id="breathing"></div>
-</div>
+        <div class="message" id="message"></div>
+        <div id="breathing"></div>
+        <div id="hug"></div>
 
-<script>
-const messages = [
-    "I'm always here for you ❤️",
-    "You're stronger than your past 💫",
-    "You deserve peace and happiness 🌈",
-    "You're not alone, ever 🤍",
-    "Everything will be okay, slowly but surely 🌸"
-];
+        <input type="text" id="mood" placeholder="How are you feeling?" oninput="respondMood()">
+    </div>
 
-function showMessage() {
-    document.getElementById("message").innerText = messages[Math.floor(Math.random()*messages.length)];
-}
+    <script>
+        const messages = [
+            "I'm always here for you ❤️",
+            "You're stronger than you think 💫",
+            "You are loved more than you know 🤍",
+            "Everything will be okay 🌸",
+            "You matter a lot 💖"
+        ];
 
-/* Floating hearts */
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "❤️";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.fontSize = (Math.random()*20+10)+"px";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),5000);
-}
-setInterval(createHeart, 400);
+        function showMessage() {
+            document.getElementById("message").innerText = messages[Math.floor(Math.random() * messages.length)];
+        }
 
-/* Bubble popping game */
-function startGame() {
-    for(let i=0;i<10;i++){
-        const bubble = document.createElement("div");
-        bubble.className = "bubble";
-        bubble.innerText = "💖";
-        bubble.style.top = Math.random()*80 + "%";
-        bubble.style.left = Math.random()*80 + "%";
-        bubble.onclick = () => bubble.remove();
-        document.body.appendChild(bubble);
-        setTimeout(()=>bubble.remove(),4000);
-    }
-}
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerText = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
 
-/* Breathing exercise */
-function startBreathing() {
-    const container = document.getElementById("breathing");
-    container.innerHTML = "<p>Breathe in... Breathe out...</p><div class='breath'></div>";
-}
-</script>
+        function startGame() {
+            for (let i = 0; i < 8; i++) {
+                const b = document.createElement("div");
+                b.className = "bubble";
+                b.innerText = "💖";
+                b.style.top = Math.random() * 80 + "%";
+                b.style.left = Math.random() * 80 + "%";
+                b.onclick = b.ontouchstart = () => b.remove();
+                document.body.appendChild(b);
+                setTimeout(() => b.remove(), 4000);
+            }
+        }
+
+        function startBreathing() {
+            document.getElementById("breathing").innerHTML = "<p>Breathe slowly...</p><div class='breath'></div>";
+        }
+
+        function giveHug() {
+            document.getElementById("hug").innerHTML = "<div class='hug'>🤗💖🤗</div><p>Sending you a warm hug...</p>";
+        }
+
+        function respondMood() {
+            const mood = document.getElementById("mood").value.toLowerCase();
+            let reply = "";
+
+            if (mood.includes("sad") || mood.includes("cry")) reply = "It's okay to feel this way. I'm here ❤️";
+            else if (mood.includes("alone")) reply = "You're not alone, I promise 🤍";
+            else if (mood.includes("hurt")) reply = "You didn't deserve that pain 💔";
+            else if (mood.length > 3) reply = "I hear you... and I care 💖";
+
+            document.getElementById("message").innerText = reply;
+        }
+    </script>
 
 </body>
+
 </html>
