@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nikku ❤️</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 { color: #ff4d6d; }
+
+p { color: #555; font-size: 16px; }
+
+button {
+    margin: 5px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover { background: #ff1f4d; }
+
+.message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: #ff4d6d;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Bubble game */
+.bubble {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ff99aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Breathing circle */
+.breath {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ff4d6d;
+    margin: 10px auto;
+    animation: breathe 4s infinite;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hey Nikku 💖</h1>
+    <p>You are safe. You are loved. Take a deep breath 🌸</p>
+
+    <button onclick="showMessage()">💌 Sweet Message</button>
+    <button onclick="startGame()">🎮 Pop Bubbles</button>
+    <button onclick="startBreathing()">🫶 Calm Breathing</button>
+
+    <div class="message" id="message"></div>
+    <div id="game"></div>
+    <div id="breathing"></div>
+</div>
+
+<script>
+const messages = [
+    "I'm always here for you ❤️",
+    "You're stronger than your past 💫",
+    "You deserve peace and happiness 🌈",
+    "You're not alone, ever 🤍",
+    "Everything will be okay, slowly but surely 🌸"
+];
+
+function showMessage() {
+    document.getElementById("message").innerText = messages[Math.floor(Math.random()*messages.length)];
+}
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+}
+setInterval(createHeart, 400);
+
+/* Bubble popping game */
+function startGame() {
+    for(let i=0;i<10;i++){
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.innerText = "💖";
+        bubble.style.top = Math.random()*80 + "%";
+        bubble.style.left = Math.random()*80 + "%";
+        bubble.onclick = () => bubble.remove();
+        document.body.appendChild(bubble);
+        setTimeout(()=>bubble.remove(),4000);
+    }
+}
+
+/* Breathing exercise */
+function startBreathing() {
+    const container = document.getElementById("breathing");
+    container.innerHTML = "<p>Breathe in... Breathe out...</p><div class='breath'></div>";
+}
+</script>
+
+</body>
+</html>
